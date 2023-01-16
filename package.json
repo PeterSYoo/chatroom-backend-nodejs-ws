@@ -1,0 +1,22 @@
+{
+  "name": "chatroom-backend-nodejs-ws",
+  "version": "1.0.0",
+  "description": "chatroom",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PeterSYoo/chatroom-backend-nodejs-ws.git"
+  },
+  "author": "Peter Yoo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PeterSYoo/chatroom-backend-nodejs-ws/issues"
+  },
+  "homepage": "https://github.com/PeterSYoo/chatroom-backend-nodejs-ws#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
