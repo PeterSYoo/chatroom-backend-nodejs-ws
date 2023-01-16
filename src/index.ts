@@ -34,3 +34,7 @@ io.on('connection', (socket) => {
 server.listen(process.env.PORT || 3001, () => {
   console.log('Server started');
 });
+
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
