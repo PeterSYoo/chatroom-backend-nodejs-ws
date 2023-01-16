@@ -14,27 +14,31 @@ app.use(
   })
 );
 
-const server = http.createServer(app);
+// const server = http.createServer(app);
 
-const io = new Server(server, {
-  cors: {
-    origin: process.env.APP,
-    methods: ['GET', 'POST'],
-  },
-});
+// const io = new Server(server, {
+//   cors: {
+//     origin: process.env.APP,
+//     methods: ['GET', 'POST'],
+//   },
+// });
 
-io.on('connection', (socket) => {
-  console.log(`User Connected: ${socket.id}`);
+// io.on('connection', (socket) => {
+//   console.log(`User Connected: ${socket.id}`);
 
-  socket.on('disconnect', () => {
-    console.log('User Disconnected', socket.id);
-  });
-});
+//   socket.on('disconnect', () => {
+//     console.log('User Disconnected', socket.id);
+//   });
+// });
 
-server.listen(process.env.PORT || 3001, () => {
-  console.log('Server started');
-});
+// server.listen(process.env.PORT || 3001, () => {
+//   console.log('Server started');
+// });
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
+});
+
+app.listen(process.env.PORT || 3000, () => {
+  console.log('Server started');
 });
