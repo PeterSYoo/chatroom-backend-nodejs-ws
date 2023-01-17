@@ -28,8 +28,9 @@ const io = new Server(server, {
 io.on('connection', (socket) => {
   console.log(`User Connected: ${socket.id}`);
 
-  socket.on('ping', () => {
-    socket.emit('pong');
+  socket.on('ping', (startTime) => {
+    let latency = Date.now() - startTime;
+    socket.emit('pong', latency);
   });
 
   socket.on('join_room', (data) => {
