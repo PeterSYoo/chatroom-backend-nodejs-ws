@@ -8,30 +8,30 @@ require('dotenv').config();
 
 const PORT = process.env.PORT;
 
-// app.use(
-//   cors({
-//     origin: process.env.APP,
-//     methods: ['GET', 'POST'],
-//     allowedHeaders: ['Content-Type', 'Authorization'],
-//   })
-// );
+app.use(
+  cors({
+    origin: 'https://chatroom-backend-nodejs-ws.up.railway.app',
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  })
+);
 
 const server = http.createServer(app);
 
-// const io = new Server(server, {
-//   cors: {
-//     origin: process.env.APP,
-//     methods: ['GET', 'POST'],
-//   },
-// });
+const io = new Server(server, {
+  cors: {
+    origin: 'https://chatroom-backend-nodejs-ws.up.railway.app',
+    methods: ['GET', 'POST'],
+  },
+});
 
-// io.on('connection', (socket) => {
-//   console.log(`User Connected: ${socket.id}`);
+io.on('connection', (socket) => {
+  console.log(`User Connected: ${socket.id}`);
 
-//   socket.on('disconnect', () => {
-//     console.log('User Disconnected', socket.id);
-//   });
-// });
+  socket.on('disconnect', () => {
+    console.log('User Disconnected', socket.id);
+  });
+});
 
 server.listen(PORT || 3001, () => {
   console.log('Server started');
