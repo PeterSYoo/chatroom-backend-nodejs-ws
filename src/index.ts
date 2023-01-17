@@ -10,7 +10,7 @@ const PORT = process.env.PORT;
 
 app.use(
   cors({
-    origin: 'https://chatroom-backend-nodejs-ws.up.railway.app',
+    origin: process.env.APP,
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type', 'Authorization'],
   })
@@ -20,7 +20,7 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: 'https://chatroom-backend-nodejs-ws.up.railway.app',
+    origin: process.env.APP,
     methods: ['GET', 'POST'],
   },
 });
