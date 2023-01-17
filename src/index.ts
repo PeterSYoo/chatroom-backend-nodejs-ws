@@ -6,6 +6,8 @@ const { Server } = require('socket.io');
 
 require('dotenv').config();
 
+const PORT = process.env.PORT;
+
 app.use(
   cors({
     origin: process.env.APP,
@@ -31,7 +33,7 @@ app.use(
 //   });
 // });
 
-// server.listen(process.env.PORT || 3001, () => {
+// server.listen(PORT || 3001, () => {
 //   console.log('Server started');
 // });
 
@@ -39,6 +41,6 @@ app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
-app.listen(process.env.PORT || 3000, () => {
-  console.log('Server started');
+app.listen(PORT || 3000, () => {
+  console.log(`Server running on port ${PORT}`);
 });
