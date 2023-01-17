@@ -8,13 +8,13 @@ require('dotenv').config();
 
 const PORT = process.env.PORT;
 
-app.use(
-  cors({
-    origin: process.env.APP,
-    methods: ['GET', 'POST'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-  })
-);
+// app.use(
+//   cors({
+//     origin: process.env.APP,
+//     methods: ['GET', 'POST'],
+//     allowedHeaders: ['Content-Type', 'Authorization'],
+//   })
+// );
 
 // const server = http.createServer(app);
 
