@@ -8,8 +8,6 @@ require('dotenv').config();
 
 const PORT = process.env.PORT;
 
-app.use(cors());
-
 // app.use(
 //   cors({
 //     origin: process.env.APP,
@@ -18,7 +16,7 @@ app.use(cors());
 //   })
 // );
 
-// const server = http.createServer(app);
+const server = http.createServer(app);
 
 // const io = new Server(server, {
 //   cors: {
@@ -35,14 +33,10 @@ app.use(cors());
 //   });
 // });
 
-// server.listen(PORT || 3001, () => {
-//   console.log('Server started');
-// });
+server.listen(PORT || 3001, () => {
+  console.log('Server started');
+});
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
-});
-
-app.listen(PORT || 3000, () => {
-  console.log(`Server running on port ${PORT}`);
 });
