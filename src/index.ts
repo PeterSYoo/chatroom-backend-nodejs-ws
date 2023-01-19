@@ -3,8 +3,8 @@ const app = express();
 const http = require('http');
 const cors = require('cors');
 const { Server } = require('socket.io');
-const userController = require('./routes/userController');
-const chatController = require('./routes/chatController');
+const userController = require('./routes/userController.ts');
+const chatController = require('./routes/chatController.ts');
 
 // Enables .env
 require('dotenv').config();
