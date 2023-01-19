@@ -11,11 +11,6 @@ require('dotenv').config();
 
 const PORT = process.env.PORT;
 
-// Middleware
-app.use(cors());
-app.use('/', userController);
-app.use('/', chatController);
-
 // WebSockets
 const server = http.createServer(app);
 
@@ -51,6 +46,11 @@ io.on('connection', (socket) => {
 server.listen(PORT || 3001, () => {
   console.log('Server started');
 });
+
+// Middleware
+app.use(cors());
+app.use('/', userController);
+app.use('/', chatController);
 
 // Root Endpoint
 app.get('/', (req, res) => {
