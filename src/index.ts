@@ -16,7 +16,7 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: '*',
+    origin: process.env.APP,
   },
 });
 
@@ -47,7 +47,11 @@ server.listen(PORT || 3001, () => {
 });
 
 // Middleware
-app.use(cors());
+app.use(
+  cors({
+    origin: process.env.APP,
+  })
+);
 app.use('/', userController);
 app.use('/', chatController);
 
