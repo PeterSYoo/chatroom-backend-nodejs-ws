@@ -3,11 +3,15 @@ const app = express();
 const http = require('http');
 const cors = require('cors');
 const { Server } = require('socket.io');
+const userController = require('./routes/userController');
+const chatController = require('./routes/chatController');
 
+// Enables .env
 require('dotenv').config();
 
 const PORT = process.env.PORT;
 
+// Middleware
 app.use(
   cors({
     origin: process.env.APP,
@@ -15,7 +19,10 @@ app.use(
     allowedHeaders: ['Content-Type', 'Authorization'],
   })
 );
+app.use('/', userController);
+app.use('/', chatController);
 
+// WebSockets
 const server = http.createServer(app);
 
 const io = new Server(server, {
@@ -51,6 +58,7 @@ server.listen(PORT || 3001, () => {
   console.log('Server started');
 });
 
+// Root Endpoint
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });
