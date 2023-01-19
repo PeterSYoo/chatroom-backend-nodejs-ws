@@ -12,13 +12,7 @@ require('dotenv').config();
 const PORT = process.env.PORT;
 
 // Middleware
-app.use(
-  cors({
-    origin: process.env.APP,
-    methods: ['GET', 'POST'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-  })
-);
+app.use(cors());
 app.use('/', userController);
 app.use('/', chatController);
 
