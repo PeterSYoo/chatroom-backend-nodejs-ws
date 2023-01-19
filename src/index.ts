@@ -47,11 +47,6 @@ server.listen(PORT || 3001, () => {
 });
 
 // Middleware
-app.use(
-  cors({
-    origin: process.env.APP,
-  })
-);
 app.use('/', userController);
 app.use('/', chatController);
 
