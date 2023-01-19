@@ -48,8 +48,8 @@ server.listen(PORT || 3001, () => {
 
 // Middleware
 app.use(cors());
-// app.use('/', userController);
-// app.use('/', chatController);
+app.use('/', userController);
+app.use('/', chatController);
 
 // Root Endpoint
 app.get('/', (req, res) => {
