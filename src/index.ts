@@ -1,7 +1,7 @@
+import chatroomConnect from './config/chatroomConnect';
 const express = require('express');
 const app = express();
 const http = require('http');
-const cors = require('cors');
 const { Server } = require('socket.io');
 const userController = require('./routes/userController.ts');
 const chatController = require('./routes/chatController.ts');
@@ -10,6 +10,18 @@ const chatController = require('./routes/chatController.ts');
 require('dotenv').config();
 
 const PORT = process.env.PORT;
+
+chatroomConnect()
+  .then((connected) => {
+    if (connected) {
+      console.log('Succesfully connected to MongoDB.');
+    } else {
+      console.log('Failed to connect to MongoDB.');
+    }
+  })
+  .catch((error) => {
+    console.log('An error occured while connecting to MongoDB.', error);
+  });
 
 // WebSockets
 const server = http.createServer(app);
