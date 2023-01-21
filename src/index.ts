@@ -2,6 +2,8 @@ import chatroomConnect from './config/chatroomConnect';
 const express = require('express');
 const app = express();
 const http = require('http');
+const cors = require('cors');
+const bodyParser = require('body-parser');
 const { Server } = require('socket.io');
 const userController = require('./routes/userController.ts');
 const chatController = require('./routes/chatController.ts');
@@ -59,6 +61,9 @@ server.listen(PORT || 3001, () => {
 });
 
 // Middleware
+app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/', userController);
 app.use('/', chatController);
 
