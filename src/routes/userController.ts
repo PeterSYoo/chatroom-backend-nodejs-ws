@@ -14,9 +14,26 @@ user.get('/user/get-users', async (req, res) => {
 });
 
 // POST - Save user document after google sign in through firebase
-user.post('/user/create-users', async (req, res) => {
+user.post('/user/create-user', async (req, res) => {
   try {
-  } catch (error) {}
+    const formData = req.body;
+    const existingUser = await Users.findOne({
+      email: formData.email,
+    });
+
+    if (existingUser)
+      return res.status(404).json({ error: 'User already exists!' });
+
+    if (!formData)
+      return res.status(404).json({ error: 'Form data not provided!' });
+    if (formData) {
+      await Users.create(formData, (err, data) => {
+        return res.status(200).json(data);
+      });
+    }
+  } catch (error) {
+    return res.status(404).json({ error });
+  }
 });
 
 module.exports = user;
